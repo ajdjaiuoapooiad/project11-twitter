@@ -1,0 +1,10 @@
+{% extends 'twitter/base.html' %}
+
+{% block content %}
+{% for post in post_list %}
+
+<a href="{% url 'twitter:detail' post.pk %}"><p>{{post.title}}</p></a>
+<p>{{post.created_at}}</p>
+
+{% endfor %}
+{% endblock %}

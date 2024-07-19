@@ -1,0 +1,14 @@
+{% extends 'twitter/base.html' %}
+{% load static %}
+
+{% block content %}
+<p>{{post.title}}</p>
+<p>{{post.text}}</p>
+{% if post.thumbnail %}
+    <img class="img-thumbnail" src="{{post.thumbnail.url}}" alt="{{ post.title }}">
+{% else %}
+    <img class="img-thumbnail" src="{% static 'twitters/noimage.jpg' %}" alt="{{ post.title }}">
+{% endif %}
+
+<p>{{post.created_at}}</p>
+{% endblock %}
