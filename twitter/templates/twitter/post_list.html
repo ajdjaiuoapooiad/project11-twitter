@@ -1,10 +1,28 @@
 {% extends 'twitter/base.html' %}
+{% load static %}
 
 {% block content %}
+
+<div class="row">
+
 {% for post in post_list %}
+<div class="card col-4 mb-3">
 
-<a href="{% url 'twitter:detail' post.pk %}"><p>{{post.title}}</p></a>
-<p>{{post.created_at}}</p>
+  <div class="card-header text-white bg-primary">
+  {{post.title}}</div>
+    <div class="card-body">
+      <p class="card-text">
+        {% if post.thumbnail %}
+            <img class="img-thumbnail" src="{{post.thumbnail.url}}" alt="{{ post.title }}">
+        {% else %}
+            <img class="img-thumbnail" src="{% static 'twitters/noimage.jpg' %}" alt="{{ post.title }}">
+        {% endif %}
+      </p>
 
+      <a href="{% url 'twitter:detail' post.pk %}" class="btn btn-primary">続きを読む</a>
+    </div>
+</div>
 {% endfor %}
+</div>
+
 {% endblock %}
